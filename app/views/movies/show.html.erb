@@ -1,0 +1,19 @@
+<%= javascript_include_tag "rate" %>
+
+<div class='movies'>
+  <div class='movie-wide col-md-10 col-xs-12'>
+    <h2> <%= 'Title: ' + @movie.title %> </h2>
+    <h2 class='movie-text'> <%= 'Description:' + @movie.text %> </h2>
+    <h2 class='movie-category'> <%= 'Category: ' + @movie.category.name %> </h2>
+    <% if user_signed_in? %>
+      <h2 class='movie-rating' id=<%="rating-#{@movie.id}"%>> <%= 'Rating: ' + @movie.raiting %> </h2>
+      <% if !@movie.rated_by_me %>
+        <div class='rate' id=<%="rate-#{@movie.id}"%>>
+          <% 0.upto(10) do |rate| %>
+            <button class='rate-button' onClick=<%= "rateMovie(" + @movie.id.to_s + "," + rate.to_s + ")" %>><%= rate %></button>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
