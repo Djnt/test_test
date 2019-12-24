@@ -8,10 +8,11 @@ class Movie < ApplicationRecord
   def raiting
     rates_raw = rates
     return "0/0" if rates_raw.count == 0
-    "#{rates_raw.pluck(:value).sum/rates_raw.count} avg of #{rates_raw.count} users"
+    "#{rates_raw.pluck(:value).sum/rates_raw.count}/#{rates_raw.count}"
   end
 
   def rated_by_me
+    return true unless User.current
     Rate.where(movie_id: id, user_id: User.current.id).count > 0
   end
 

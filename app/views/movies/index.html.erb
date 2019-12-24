@@ -1,0 +1,60 @@
+<%= javascript_include_tag "home/index" %>
+<%= javascript_include_tag "rate" %>
+<div class="row mt-3">
+  <div class='filter col-md-12'>
+    <h4 class='float-left'> category: &nbsp;</h4>
+    <select onChange='applyCategory(this)'>
+      <option value=0>Select category</option>
+      <option value=-1>All categories</option>
+      <% @categories.each do |category| %>
+        <option value=<%= category.id %>>  <%= category.name %>  </option>
+      <% end %>
+    </select>
+  </div>
+  <% @movies.each do |movie| %>
+    <div class='col-md-4 col-xs-12'>
+      <div class='card mb-4'>
+        <img src='https://cdn.thegeekherald.com/wp-content/uploads/2019/11/Shriek-5-cancelled-e1572632977518.jpg'>
+        <div class='card-body'>
+          <a class='movie-title' href=<%= "/movies/#{movie.id}" %>><h2> <%= movie.title %> </h2></a>
+          <h4 class='movie-text'> <%= movie.text %> </h3>
+          <h3 class='movie-category'> <%= movie.category.name %> </h3>
+          <% if user_signed_in? %>
+            <div clas='rate-block'>
+              <h3 class='movie-rating' id=<%="rating-#{movie.id}"%>> <%= movie.raiting %> </h3>
+              <% if !movie.rated_by_me %>
+                <button type="button" id=<%= "rate-open" + movie.id.to_s %> class="rate-button-modal btn btn-primary" data-toggle="modal" data-target=<%="#exampleModal" + movie.id.to_s %>>
+                  Rate
+                </button>
+            
+                <div class="modal fade" id=<%= "exampleModal" + movie.id.to_s %> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Rate from 0 to 10</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class='rate' id=<%="rate-#{movie.id}"%>>
+                          <% 0.upto(10) do |rate| %>
+                            <button class='btn btn-primary' onClick=<%= "rateMovie(" + movie.id.to_s + "," + rate.to_s + ")" %>><%= rate %></button>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <i class='rate-star fa fa-star'></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class='col-12'>
+    <%= paginate @movies %>
+  </div>
+</div>

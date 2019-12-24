@@ -11,6 +11,8 @@ function rateMovie(id, rate) {
     .then(data => {
       document.getElementById('rate-' + id).style = "display: none;"
       document.getElementById('rating-' + id).textContent=data.raiting;
+      $('#exampleModal'+id).modal('hide');
+      document.getElementById('rate-open' + id).style = "display: none;"
     })
   })
   .catch(err => alert('unable to rate'))

@@ -1,28 +1,30 @@
 @import "bootstrap";
+@import "font-awesome";
 
 .top-header {
-  width: 100vw;
+  width: 100%;
   height: 55px;
   background: rgb(2,0,36);
   background: linear-gradient(40deg, rgb(174, 172, 212) 0%, rgb(181, 181, 216) 35%, rgb(201, 208, 209) 100%);
+  padding: 10px;
 
   button {
     float: right;
     margin-left: 20px;
-    margin-top: 10px;
-    height: 35px !important;
     display: block !important;
     position: relative !important;
     cursor: pointer;
+    font-weight: bold;
   }
-  h2 {
-    float: right;
-    margin-top: 10px;
+  h4 {
+    line-height: inherit;
+    font-weight: bold;
+    letter-spacing: 0.8px;
   }
 }
 
-.content {
-  margin: 20px;
+.container {
+  padding-top: 20px;
 }
 
 .new_user {
@@ -34,74 +36,42 @@
   }
 }
 
-.movie {
-  border: 1px solid gray;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  justify-items: stretch;
-  display: flex;
-
-  .movie-text {
-    max-width: 500px;
-    margin-left: 15px; 
+.card {
+  img {
+    width: 100%;
   }
   .movie-category {
-    margin-left: 20px;
-  }
-  .movie-rating {
-    margin-left: 20px;
-    margin-right: 15px;
+    color: gray;
   }
 }
 
-.movie-wide {
-  border: 1px solid gray;
-  h2 {
-    margin-top: 10px;
+.pagination {
+  margin-bottom: 20px;
+
+  .page{
+    width: 25px;
+    height: 25px;
+    border: 1px solid gray;
+    color: #0056b3;
+    text-align: center;
   }
-  .movie-text {
-    overflow-y: scroll;
-    word-wrap: break-word;
+
+  .next, .last, .prev, .first {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .current {
+    color: white;
+    background-color: #007bff;
+    border-color: #007bff;
   }
 }
 
-@media (max-width: 750px) {
-  .top-header {
-    height: 105px;
-    h2 {
-      float: left;
-    }
-    button {
-      float: left;
-      margin-left: 5px; 
-    }
-  }
+.movie-rating {
+  float: left;
+}
 
-  button {
-    margin-top: 0px;
-  }
-
-  .new_user {
-    width: 100vw;
-  }
-
-  .movie {
-    display: block;
-
-    .movie-text {
-      width: 100%;
-      margin: 0px;
-      overflow-y: scroll;
-      word-wrap: break-word;
-    }
-    .movie-category {
-      width: 100%;
-      margin: 0px; 
-    }
-    .movie-rating {
-      width: 100%;
-      margin: 0px; 
-    }
-  }
-
+.rate-button-modal {
+  float: right;
 }

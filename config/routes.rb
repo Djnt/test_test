@@ -2,6 +2,6 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
-  root to: 'home#index'
+  root to: 'movies#index'
   resources :movies, only: [:show, :update]
 end
