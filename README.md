@@ -1,24 +1,13 @@
-# README
+# IMDB clone clone clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://testtesttza.herokuapp.com/
 
-Things you may want to cover:
+### Admin panel
+https://testtesttza.herokuapp.com/admin
+#### login
+admin@example.com
+#### password
+password
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### User credentials
+user@example.com/password
